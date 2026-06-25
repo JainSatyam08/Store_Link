@@ -42,6 +42,21 @@ val IconCircleBg    = Color(0xFFEFFAF0)
 
 
 val PeachBg        = Color(0xFFFFF0E8)
+
 val GreenTag        = Color(0xFFE8F5E9)
+
 val GreenTagText    = Color(0xFF2E7D32)
+
 val DescGray        = Color(0xFF555555)
+
+
+val InStockGreen    = Color(0xFF4CAF50)
+
+
+val WorkIconBg     = Color(0xFFE3EEFB)
+val WorkIconColor  = Color(0xFF1976D2)
+val OtherIconBg    = Color(0xFFE3F4E5)
+val OtherIconColor = Color(0xFF388E3C)
+val LogoutRed      = Color(0xFFE53935)
+val LogoutBg       = Color(0xFFFDECEA)
+

@@ -77,6 +77,7 @@ fun HomeScreen(nav: NavHostController) {
     Scaffold(
         bottomBar = {
             HomeBottomNav(
+                nav,
                 selectedTab   = selectedTab,
                 onTabSelected = { selectedTab = it }
             )

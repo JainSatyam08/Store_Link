@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.store_link.screen.MyAddressesScreen
+import com.example.store_link.screen.MyWishlistScreen
+import com.example.store_link.screen.ProfileScreen
 import com.example.storelink.screen.CategoryListingScreen
 import com.example.storelink.screen.CheckoutScreen
 import com.example.storelink.screen.HomeScreen
@@ -35,5 +38,16 @@ fun AppNavGraph(navController: NavHostController){
         composable("cart") {
             CheckoutScreen(navController)
         }
+        composable("wishlist") {
+            MyWishlistScreen(navController)
+        }
+        composable("profile") {
+            ProfileScreen(navController)
+        }
+        composable("address") {
+            MyAddressesScreen(navController)
+        }
+
+
     }
 }

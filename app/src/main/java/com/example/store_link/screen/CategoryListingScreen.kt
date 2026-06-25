@@ -99,6 +99,7 @@ fun CategoryListingScreen(
     Scaffold(
         bottomBar = {
             HomeBottomNav(
+                navController,
                 selectedTab   = selectedTab,
                 onTabSelected = { selectedTab = it }
             )

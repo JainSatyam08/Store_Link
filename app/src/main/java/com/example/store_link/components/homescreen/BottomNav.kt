@@ -17,41 +17,39 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.store_link.ui.theme.BrandOrange
-import com.example.store_link.ui.theme.BrandOrange
-import com.example.store_link.ui.theme.DescGray
-import com.example.store_link.ui.theme.GreenTag
-import com.example.store_link.ui.theme.GreenTagText
 import com.example.store_link.ui.theme.HintGray
-import com.example.store_link.ui.theme.NavyBlue
-import com.example.store_link.ui.theme.PeachBg
-import com.example.store_link.ui.theme.BorderGray
 import com.example.store_link.ui.theme.CardWhite
-import com.example.store_link.ui.theme.DiscountBg
-import com.example.store_link.ui.theme.DiscountText
-import com.example.store_link.ui.theme.FreeDeliveryBg
-import com.example.store_link.ui.theme.FreeDeliveryGreen
-import com.example.store_link.ui.theme.SidebarBg
-
-
 
 @Composable
-fun HomeBottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
+fun HomeBottomNav(nav: NavHostController,
+                  selectedTab: Int, onTabSelected: (Int) -> Unit) {
     val tabs = listOf(
-        Pair(Icons.Filled.Home,       "Home"),
-        Pair(Icons.Filled.Category, "Categories"),
-        Pair(Icons.Filled.ShoppingBag,     "Orders"),
-        Pair(Icons.Filled.Favorite,   "Wishlist"),
-        Pair(Icons.Rounded.Person2,    "Profile")
+        Triple(Icons.Filled.Home,       "Home", "home"),
+        Triple(Icons.Filled.Category, "Categories", "category_listing"),
+        Triple(Icons.Filled.ShoppingBag,     "Orders",""),
+        Triple(Icons.Filled.Favorite,   "Wishlist","wishlist"),
+        Triple(Icons.Rounded.Person2,    "Profile","profile")
     )
 
     NavigationBar(containerColor = CardWhite, tonalElevation = 8.dp) {
-        tabs.forEachIndexed { index, (iconRes, label) ->
+        tabs.forEachIndexed { index, (icon, label, route) ->
             NavigationBarItem(
                 selected = selectedTab == index,
-                onClick  = { onTabSelected(index) },
+                onClick  = {
+                    onTabSelected(index)
+                    nav.navigate(route){
+                               // Same tab dobara dobara stack mein na chadhe
+                        launchSingleTop = true
+                               // Home ko backstack mein rakho taaki back press pe seedha exit na ho
+                        popUpTo("home") { saveState = true }
+                        restoreState = true
+                    }
+                           }
+                ,
                 icon     = {
-                    Icon(imageVector =  iconRes, contentDescription = label, modifier = Modifier.size(22.dp))
+                    Icon(imageVector =  icon, contentDescription = label, modifier = Modifier.size(22.dp))
                 },
                 label    = { Text(label, fontSize = 10.sp) },
                 colors   = NavigationBarItemDefaults.colors(
