@@ -122,7 +122,7 @@ fun SplashScreen(
 
         // Step 5 — Wait then navigate
         delay(800)
-        nav.navigate("home") {
+        nav.navigate("signin") {
             popUpTo("splash") {
                 inclusive = true
             }
